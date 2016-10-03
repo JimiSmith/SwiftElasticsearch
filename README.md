@@ -73,4 +73,4 @@ There is a playground in the repo that demonstrates how to perform basic operati
 
 ## License
 
-MIT Licensed. See the [LICENSE](/blob/master/LICENSE) file for details
+MIT Licensed. See the [LICENSE](/LICENSE) file for details
