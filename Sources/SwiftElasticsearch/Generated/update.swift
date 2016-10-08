@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html
      * - parameter type: The type of the document
@@ -12,7 +13,7 @@ extension Request {
         let url = "/\(index)/\(type)/\(id)/_update"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body?.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html
      * - parameter type: The type of the document
@@ -26,4 +27,5 @@ extension Request {
         let url = "/\(index)/\(type)/\(id)/_update"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
 }

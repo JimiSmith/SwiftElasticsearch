@@ -34,22 +34,19 @@ public struct Hit<T: ElasticsearchResponse>: ElasticsearchResponse {
 
 public struct Hits<T: ElasticsearchResponse>: ElasticsearchResponse {
     public let total: Int
-    public let maxScore: Double
+    public let maxScore: Double?
     public let hits: [Hit<T>]
     
     public init(json: [String : Any]) throws {
         guard let total = json["total"] as? Int else {
             throw ElasticsearchError.missingResponseField("total")
         }
-        guard let maxScore = json["max_score"] as? Double else {
-            throw ElasticsearchError.missingResponseField("max_score")
-        }
         guard let hitsAsAny = json["hits"] as? [[String: Any]] else {
             throw ElasticsearchError.missingResponseField("hits")
         }
         
         self.total = total
-        self.maxScore = maxScore
+        self.maxScore = json["max_score"] as? Double
         self.hits = try hitsAsAny.map({ try Hit<T>(json: $0) })
     }
 }

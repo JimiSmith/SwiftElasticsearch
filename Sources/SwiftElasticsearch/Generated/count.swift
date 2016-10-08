@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
      * - parameter method: The http method used to execute the request
@@ -9,7 +10,7 @@ extension Request {
         let url = "/_count"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body?.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
      * - parameter method: The http method used to execute the request
@@ -20,6 +21,7 @@ extension Request {
         let url = "/_count"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
      * - parameter index: A comma-separated list of indices to restrict the results
@@ -31,7 +33,7 @@ extension Request {
         let url = "/\(index.joined(separator: ","))/_count"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body?.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
      * - parameter index: A comma-separated list of indices to restrict the results
@@ -43,6 +45,7 @@ extension Request {
         let url = "/\(index.joined(separator: ","))/_count"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
      * - parameter type: A comma-separated list of types to restrict the results
@@ -55,7 +58,7 @@ extension Request {
         let url = "/\(index.joined(separator: ","))/\(type.joined(separator: ","))/_count"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body?.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html
      * - parameter type: A comma-separated list of types to restrict the results
@@ -68,4 +71,5 @@ extension Request {
         let url = "/\(index.joined(separator: ","))/\(type.joined(separator: ","))/_count"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
 }

@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html
      * - parameter type: The type of the document
@@ -11,5 +12,5 @@ extension Request {
         let url = "/\(index)/\(type)/\(id)"
         return Request(method: method, url: url, body: nil)
     }
-
+    
 }

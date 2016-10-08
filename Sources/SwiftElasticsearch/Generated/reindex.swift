@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * https://www.elastic.co/guide/en/elasticsearch/plugins/master/plugins-reindex.html
      * - parameter method: The http method used to execute the request
@@ -9,7 +10,7 @@ extension Request {
         let url = "/_reindex"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body.asJson())
     }
-
+    
     /**
      * https://www.elastic.co/guide/en/elasticsearch/plugins/master/plugins-reindex.html
      * - parameter method: The http method used to execute the request
@@ -20,4 +21,5 @@ extension Request {
         let url = "/_reindex"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
 }

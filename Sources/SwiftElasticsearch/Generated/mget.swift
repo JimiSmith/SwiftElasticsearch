@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html
      * - parameter method: The http method used to execute the request
@@ -9,7 +10,7 @@ extension Request {
         let url = "/_mget"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html
      * - parameter method: The http method used to execute the request
@@ -20,6 +21,7 @@ extension Request {
         let url = "/_mget"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html
      * - parameter index: The name of the index
@@ -31,7 +33,7 @@ extension Request {
         let url = "/\(index)/_mget"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html
      * - parameter index: The name of the index
@@ -43,6 +45,7 @@ extension Request {
         let url = "/\(index)/_mget"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html
      * - parameter type: The type of the document
@@ -55,7 +58,7 @@ extension Request {
         let url = "/\(index)/\(type)/_mget"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html
      * - parameter type: The type of the document
@@ -68,4 +71,5 @@ extension Request {
         let url = "/\(index)/\(type)/_mget"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
 }

@@ -73,6 +73,9 @@ public class Connection {
         urlRequest.httpMethod = request.method.rawValue
         
         if let body = request.body {
+            if let jsonBody = body.jsonString() {
+                print(jsonBody)
+            }
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         }
         
@@ -86,6 +89,9 @@ public class Connection {
                 if let data = data {
                     let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
                     if let jsonObject = jsonObject as? [String : Any] {
+                        if let jsonBody = jsonObject.jsonString() {
+                            print(jsonBody)
+                        }
                         completion(try T(json: jsonObject), nil)
                     } else {
                         completion(nil, ElasticsearchError.unexpectedResponse)

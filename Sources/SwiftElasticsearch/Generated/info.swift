@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/
      * - parameter method: The http method used to execute the request
@@ -8,5 +9,5 @@ extension Request {
         let url = "/"
         return Request(method: method, url: url, body: nil)
     }
-
+    
 }

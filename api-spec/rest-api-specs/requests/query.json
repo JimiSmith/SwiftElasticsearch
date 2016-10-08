@@ -1,0 +1,503 @@
+{
+  "query": {
+    "key": "query",
+    "parent": "ElasticsearchBody",
+    "type": "struct",
+    "typeName": "Query",
+    "parameters": {
+      "minimum_should_match": {
+        "key": "minimum_should_match",
+        "typeName": "String",
+        "type": "simple"
+      },
+      "operator": {
+        "key": "operator",
+        "typeName": "Operator",
+        "type": "enum",
+        "options": [
+          "and",
+          "or"
+        ]
+      },
+      "max_expansions": {
+        "key": "max_expansions",
+        "typeName": "Int",
+        "type": "simple"
+      },
+      "fuzziness": {
+        "key": "fuzziness",
+        "typeName": "Int",
+        "type": "simple"
+      },
+      "analyzer": {
+        "key": "analyzer",
+        "typeName": "String",
+        "type": "simple"
+      },
+      "prefix_length": {
+        "key": "prefix_length",
+        "typeName": "Int",
+        "type": "simple"
+      },
+      "boost": {
+        "key": "boost",
+        "typeName": "Double",
+        "type": "simple"
+      },
+      "zero_terms_query": {
+        "key": "zero_terms_query",
+        "typeName": "ZeroTermsQueryType",
+        "type": "enum",
+        "options": [
+          "none",
+          "all"
+        ]
+      },
+      "cutoff_frequency": {
+        "key": "cutoff_frequency",
+        "typeName": "Double",
+        "type": "simple"
+      },
+      "tie_breaker": {
+        "key": "tie_breaker",
+        "type": "simple",
+        "typeName": "Double"
+      },
+      "disable_coord": {
+        "key": "disable_coord",
+        "type": "simple",
+        "typeName": "Bool"
+      }
+    },
+    "one_of": [
+      {
+        "key": "match_all",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "MatchAll"
+      },
+      {
+        "key": "match",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Match<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "any_of": [
+            {
+              "key": "query",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "type",
+              "typeName": "MatchType",
+              "type": "enum",
+              "options": [
+                "phrase",
+                "phrase_prefix",
+                "boolean"
+              ]
+            },
+            {
+              "key": "operator",
+              "type": "parameter"
+            },
+            {
+              "key": "max_expansions",
+              "type": "parameter"
+            },
+            {
+              "key": "fuzziness",
+              "type": "parameter"
+            },
+            {
+              "key": "analyzer",
+              "type": "parameter"
+            },
+            {
+              "key": "prefix_length",
+              "type": "parameter"
+            },
+            {
+              "key": "boost",
+              "type": "parameter"
+            },
+            {
+              "key": "minimum_should_match",
+              "type": "parameter"
+            },
+            {
+              "key": "zero_terms_query",
+              "type": "parameter"
+            },
+            {
+              "key": "cutoff_frequency",
+              "type": "parameter"
+            }
+          ]
+        }
+      },
+      {
+        "key": "multi_match",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "MultiMatch<T>",
+        "any_of": [
+          {
+            "key": "query",
+            "required": true,
+            "type": "simple",
+            "typeName": "T"
+          },
+          {
+            "key": "fields",
+            "required": true,
+            "type": "simple_array",
+            "typeName": "String"
+          },
+          {
+            "key": "type",
+            "type": "enum",
+            "typeName": "MultiMatchType",
+            "options": [
+              "best_fields",
+              "most_fields",
+              "cross_fields",
+              "phrase",
+              "phrase_prefix"
+            ]
+          },
+          {
+            "key": "tie_breaker",
+            "type": "parameter"
+          },
+          {
+            "key": "operator",
+            "type": "parameter"
+          },
+          {
+            "key": "max_expansions",
+            "type": "parameter"
+          },
+          {
+            "key": "fuzziness",
+            "type": "parameter"
+          },
+          {
+            "key": "analyzer",
+            "type": "parameter"
+          },
+          {
+            "key": "prefix_length",
+            "type": "parameter"
+          },
+          {
+            "key": "boost",
+            "type": "parameter"
+          },
+          {
+            "key": "minimum_should_match",
+            "type": "parameter"
+          },
+          {
+            "key": "zero_terms_query",
+            "type": "parameter"
+          },
+          {
+            "key": "cutoff_frequency",
+            "type": "parameter"
+          }
+        ]
+      },
+      {
+        "key": "common",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Common<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "any_of": [
+            {
+              "key": "query",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "cutoff_frequency",
+              "type": "parameter"
+            },
+            {
+              "key": "minimum_should_match",
+              "type": "parameter"
+            },
+            {
+              "key": "boost",
+              "type": "parameter"
+            },
+            {
+              "key": "analyzer",
+              "type": "parameter"
+            },
+            {
+              "key": "disable_coord",
+              "type": "parameter"
+            }
+          ]
+        }
+      },
+      {
+        "key": "bool",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "BoolQuery",
+        "any_of": [
+          {
+            "key": "must",
+            "type": "array",
+            "typeName": "QueryItem"
+          },
+          {
+            "key": "should",
+            "type": "array",
+            "typeName": "QueryItem"
+          },
+          {
+            "key": "filter",
+            "type": "array",
+            "typeName": "QueryItem"
+          },
+          {
+            "key": "must_not",
+            "type": "array",
+            "typeName": "QueryItem"
+          },
+          {
+            "key": "boost",
+            "type": "parameter"
+          },
+          {
+            "key": "minimum_should_match",
+            "type": "parameter"
+          }
+        ]
+      },
+      {
+        "key": "term",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Term<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "any_of": [
+            {
+              "key": "value",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "boost",
+              "type": "parameter"
+            }
+          ]
+        }
+      },
+      {
+        "key": "terms",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Terms<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "value": {
+            "key": "value",
+            "required": true,
+            "typeName": "T",
+            "type": "simple_array"
+          }
+        }
+      },
+      {
+        "key": "range",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Range<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "any_of": [
+            {
+              "key": "lte",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "gte",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "boost",
+              "type": "parameter"
+            },
+            {
+              "key": "format",
+              "typeName": "String",
+              "type": "simple"
+            },
+            {
+              "key": "time_zone",
+              "typeName": "String",
+              "type": "simple"
+            }
+          ]
+        }
+      },
+      {
+        "key": "exists",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Exists<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "value": {
+            "key": "value",
+            "required": true,
+            "typeName": "T",
+            "type": "simple"
+          }
+        }
+      },
+      {
+        "key": "prefix",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Prefix<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "any_of": [
+            {
+              "key": "prefix",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "boost",
+              "type": "parameter"
+            }
+          ]
+        }
+      },
+      {
+        "key": "wildcard",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "WildCard<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "any_of": [
+            {
+              "key": "wildcard",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "boost",
+              "type": "parameter"
+            }
+          ]
+        }
+      },
+      {
+        "key": "fuzzy",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Fuzzy<T>",
+        "childContainer": {
+          "key": "field",
+          "required": true,
+          "typeName": "String",
+          "any_of": [
+            {
+              "key": "value",
+              "required": true,
+              "typeName": "T",
+              "type": "simple"
+            },
+            {
+              "key": "max_expansions",
+              "type": "parameter"
+            },
+            {
+              "key": "fuzziness",
+              "type": "parameter"
+            },
+            {
+              "key": "prefix_length",
+              "type": "parameter"
+            },
+            {
+              "key": "boost",
+              "type": "parameter"
+            }
+          ]
+        }
+      },
+      {
+        "key": "type",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Type",
+        "any_of": [
+          {
+            "key": "value",
+            "required": true,
+            "typeName": "String",
+            "type": "simple"
+          }
+        ]
+      },
+      {
+        "key": "ids",
+        "parent": "QueryItem",
+        "type": "struct",
+        "typeName": "Ids<T>",
+        "any_of": [
+          {
+            "key": "values",
+            "required": true,
+            "typeName": "T",
+            "type": "simple_array"
+          },
+          {
+            "key": "type",
+            "typeName": "String",
+            "type": "simple"
+          }
+        ]
+      }
+    ]
+  }
+}

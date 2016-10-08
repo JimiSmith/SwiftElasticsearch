@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html
      * - parameter type: The type of the document; use `_all` to fetch the first document matching the ID across all types
@@ -6,10 +7,10 @@ extension Request {
      * - parameter index: The name of the index
      * - parameter method: The http method used to execute the request
      */
-    public static func get_source(index: String, type: String, id: String, method: HttpMethod = .GET) -> Request {
+    public static func getSource(index: String, type: String, id: String, method: HttpMethod = .GET) -> Request {
         assert(method == .GET)
         let url = "/\(index)/\(type)/\(id)/_source"
         return Request(method: method, url: url, body: nil)
     }
-
+    
 }

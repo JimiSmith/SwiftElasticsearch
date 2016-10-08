@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter method: The http method used to execute the request
@@ -9,7 +10,7 @@ extension Request {
         let url = "/_mpercolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter method: The http method used to execute the request
@@ -20,6 +21,7 @@ extension Request {
         let url = "/_mpercolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter index: The index of the document being count percolated to use as default
@@ -31,7 +33,7 @@ extension Request {
         let url = "/\(index)/_mpercolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter index: The index of the document being count percolated to use as default
@@ -43,6 +45,7 @@ extension Request {
         let url = "/\(index)/_mpercolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter type: The type of the document being percolated to use as default.
@@ -55,7 +58,7 @@ extension Request {
         let url = "/\(index)/\(type)/_mpercolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter type: The type of the document being percolated to use as default.
@@ -68,4 +71,5 @@ extension Request {
         let url = "/\(index)/\(type)/_mpercolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
 }

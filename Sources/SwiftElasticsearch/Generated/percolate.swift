@@ -1,4 +1,5 @@
 extension Request {
+
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter type: The type of the document being percolated.
@@ -11,7 +12,7 @@ extension Request {
         let url = "/\(index)/\(type)/_percolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body?.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter type: The type of the document being percolated.
@@ -24,6 +25,7 @@ extension Request {
         let url = "/\(index)/\(type)/_percolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter type: The type of the document being percolated.
@@ -37,7 +39,7 @@ extension Request {
         let url = "/\(index)/\(type)/\(id)/_percolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body?.asJson())
     }
-
+    
     /**
      * http://www.elastic.co/guide/en/elasticsearch/reference/master/search-percolate.html
      * - parameter type: The type of the document being percolated.
@@ -51,4 +53,5 @@ extension Request {
         let url = "/\(index)/\(type)/\(id)/_percolate"
         return Request(method: (method == .GET ? .POST : method), url: url, body: body)
     }
+    
 }
